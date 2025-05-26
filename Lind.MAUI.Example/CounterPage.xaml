@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lind.MAUI.Example.CounterPage"
+             xmlns:vm="clr-namespace:Lind.MAUI.Example.ViewModels;assembly=Lind.MAUI.Example.ViewModels"
+             xmlns:views="clr-namespace:Lind.MAUI.Example"
+             x:DataType="vm:CounterViewModel"
+             Title="Counter Page">
+    <VerticalStackLayout>
+        <Label Text="{Binding Count}" HorizontalOptions="Center"/>
+        <Button Text="Increment" Command="{Binding Increment}" HorizontalOptions="Center"/>
+        <Button Text="Decrement" Command="{Binding Decrement}" HorizontalOptions="Center"/>
+        <views:NavigationView BindingContext="{Binding NavVM}" HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

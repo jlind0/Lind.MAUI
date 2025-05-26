@@ -5,6 +5,7 @@
              xmlns:core="clr-namespace:Lind.MAUI.Example;assembly=Lind.MAUI.Example.Core"
              x:DataType="vm:MainWindowViewModel"
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:views="clr-namespace:Lind.MAUI.Example"
              x:Class="Lind.MAUI.Example.MainPage">
 
     <ScrollView>
@@ -50,6 +51,7 @@
                     Command="{Binding Login}"
                     HorizontalOptions="Center" />
             </VerticalStackLayout>
+            <views:NavigationView BindingContext="{Binding NavVM}" />
         </VerticalStackLayout>
     </ScrollView>
 

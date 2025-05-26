@@ -14,6 +14,8 @@ namespace Lind.MAUI.Example
 {
     public static class MauiProgram
     {
+        public static void Nav(INavigationService service) { 
+        }
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -46,6 +48,7 @@ namespace Lind.MAUI.Example
                 {
                     pBuilder.ConfigureServices(services =>
                     {
+                        services.AddSingleton<INavService, NavService>();
                         services.AddSingleton(provider =>
                         {
                             var client = PublicClientApplicationBuilder.Create(builder.Configuration["AzureAD:ClientId"])
@@ -103,13 +106,17 @@ namespace Lind.MAUI.Example
                         services.AddSingleton<IWeatherServiceProxy, WeatherServiceProxy>();
                         services.AddScoped<NotificationDialogViewModel>();
                         services.AddTransient<NotificationDialog>();
+                        services.AddSingleton<NavigationViewModel>();
+                        services.AddScoped<CounterViewModel>();
                         services.AddScoped<MainWindowViewModel>();
                         services.AddTransient<MainPage>();
+                        services.AddTransient<CounterPage>();
 
                     });
                     pBuilder.RegisterTypes(registry =>
                     {
                         registry.RegisterForNavigation<MainPage, MainWindowViewModel>();
+                        registry.RegisterForNavigation<CounterPage, CounterViewModel>();
                         registry.RegisterDialog<NotificationDialog, NotificationDialogViewModel>(NotificationDialogViewModel.NotificationDialog);
                     });
                     pBuilder.CreateWindow("/MainPage");
