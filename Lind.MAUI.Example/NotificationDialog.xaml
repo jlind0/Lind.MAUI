@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Lind.MAUI.Example.ViewModels;assembly=Lind.MAUI.Example.ViewModels"
+             x:DataType="vm:NotificationDialogViewModel"
+             x:Class="Lind.MAUI.Example.NotificationDialog">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding Message}"/>
+        <Button Command="{Binding CloseDialogCommand}" Text="Close"/>
+    </VerticalStackLayout>
+</ContentView>

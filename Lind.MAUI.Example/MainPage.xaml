@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Lind.MAUI.Example.ViewModels;assembly=Lind.MAUI.Example.ViewModels"
+             x:DataType="vm:MainWindowViewModel"
+             
+             x:Class="Lind.MAUI.Example.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <VerticalStackLayout IsVisible="{Binding IsAuthenticated}">
+                <Button
+                    Text="Logout"
+                    Command="{Binding Logout}"
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+            <VerticalStackLayout IsVisible="{Binding IsNotAuthenticated}">
+                <Button
+                    Text="Login"
+                    Command="{Binding Login}"
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
