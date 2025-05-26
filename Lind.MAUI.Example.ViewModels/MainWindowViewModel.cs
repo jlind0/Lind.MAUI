@@ -59,9 +59,9 @@ namespace Lind.MAUI.Example.ViewModels
             WeatherService = weatherService;
             Logger = logger;
             Scopes = config["WeatherService:Scopes"]?.Split(',') ?? throw new ArgumentNullException("WeatherServiceScopes is not configured in appsettings.json or environment variables.");
-            Login = new AsyncDelegateCommand(DoLogin, () => !IsAuthenticated);
-            Logout = new AsyncDelegateCommand(DoLogout, () => IsAuthenticated);
-            Load = new AsyncDelegateCommand(DoLoad, () => IsAuthenticated);
+            Login = new AsyncDelegateCommand(DoLogin);
+            Logout = new AsyncDelegateCommand(DoLogout);
+            Load = new AsyncDelegateCommand(DoLoad);
             DialogService = dialogService;
         }
         protected virtual async Task DoLogin(CancellationToken token)

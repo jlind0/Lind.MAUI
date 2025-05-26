@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Lind.MAUI.Example.ViewModels;assembly=Lind.MAUI.Example.ViewModels"
+             xmlns:core="clr-namespace:Lind.MAUI.Example;assembly=Lind.MAUI.Example.Core"
              x:DataType="vm:MainWindowViewModel"
-             
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Lind.MAUI.Example.MainPage">
 
     <ScrollView>
@@ -11,10 +12,37 @@
             Padding="30,0"
             Spacing="25">
             <VerticalStackLayout IsVisible="{Binding IsAuthenticated}">
-                <Button
+                <HorizontalStackLayout>
+                    <Button
                     Text="Logout"
                     Command="{Binding Logout}"
                     HorizontalOptions="Center" />
+                    <Button Text="Load" Command="{Binding Load}" HorizontalOptions="Center"/>
+                </HorizontalStackLayout>
+                
+                <VerticalStackLayout Padding="20">
+                    <!-- Header -->
+                    <Grid ColumnDefinitions="*, *, *, Auto" Padding="5" BackgroundColor="#eee">
+                        <Label Text="Date" FontAttributes="Bold"/>
+                        <Label Text="Summary" Grid.Column="1" FontAttributes="Bold"/>
+                        <Label Text="Temperature (F)" Grid.Column="2" FontAttributes="Bold"/>
+                        <Label Text="Temperature (C)" Grid.Column="3" FontAttributes="Bold"/>
+                    </Grid>
+
+                    <!-- Table Body -->
+                    <CollectionView ItemsSource="{Binding WeatherForecasts}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="core:WeatherForecast">
+                                <Grid ColumnDefinitions="*, *, *, Auto" Padding="5">
+                                    <Label Text="{Binding DateString }" />
+                                    <Label Text="{Binding Summary}" Grid.Column="1" />
+                                    <Label Text="{Binding TemperatureF}" Grid.Column="2" />
+                                    <Label Text="{Binding TemperatureC}" Grid.Column="3" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout IsVisible="{Binding IsNotAuthenticated}">
                 <Button

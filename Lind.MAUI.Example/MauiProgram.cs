@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Identity.Client;
 using Microsoft.Maui.LifecycleEvents;
 using System.Reflection;
+using CommunityToolkit.Maui;
 
 namespace Lind.MAUI.Example
 {
@@ -41,7 +42,7 @@ namespace Lind.MAUI.Example
                     });
 #endif
                 })
-                .UseMauiApp<App>().UsePrism(pBuilder =>
+                .UseMauiApp<App>().UseMauiCommunityToolkit().UsePrism(pBuilder =>
                 {
                     pBuilder.ConfigureServices(services =>
                     {
